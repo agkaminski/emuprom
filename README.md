@@ -1,5 +1,5 @@
 # emuprom
-DIY ATmega8 based 27C256 EEPROM emulator. Human accessible UART interface
+DIY ATmega8 based 27C256 EPROM emulator. Human accessible UART interface
 (19200N1, CH340 on USB C).
 
 # Target connection
