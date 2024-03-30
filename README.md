@@ -16,25 +16,25 @@ Available via USB C UART port, 19200 baud, no parity, 1 stop bit. Interface is
 human friendly, but also easy to script. Available commands:
 
 - ? - help
-- ! - claim bus, memory edit, assert /RST\n");
-- . - release bus, deassert /RST\n");
-- @ - set address mode\n");
-- # - set data mode\n");
-- = - dump 256 bytes @addres\n");
-- t - memory test\n");
-- + - echo on\n");
-- t- - echo off\n");
-- s - clear memory (all 0xff)\n");
-- r - reset target (pulse /RST)\n");
+- ! - claim bus, memory edit, assert /RST
+- . - release bus, deassert /RST
+- @ - set address mode
+- \# - set data mode
+- = - dump 256 bytes @addres
+- t - memory test
+- \+ - echo on
+- \- echo off
+- s - clear memory (all 0xff)
+- r - reset target (pulse /RST)
 
 Example sequence with comments:
-- - - echo disable,
+- \- echo disable,
 - ! - claims the bus,
 - @0000 - sets address to zero,
-- # - selects data mode,
+- \# - selects data mode,
 - 0102030405060708 - 8 bytes are written at address 0,
 - . - release the bus and start the target,
-- + - enable echo.
+- \+ - enable echo.
 
 Or all at once: -!@0000#0102030405060708.+
 
@@ -48,6 +48,6 @@ avr-gcc, avr-libc and avrdude are needed.
 
 # Pictures
 
-This a picture of rev A with fixed applied in rev B.
+This is a picture of rev A with fixed of rev B applied.
 
 <img src="img/top.jpeg">
