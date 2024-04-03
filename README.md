@@ -53,6 +53,6 @@ avr-gcc, avr-libc and avrdude are needed.
 
 # Pictures
 
-This is a picture of rev A with fixed of rev B applied.
+This is a picture of rev A with fixes of rev B applied.
 
 <img src="img/top.jpeg">
