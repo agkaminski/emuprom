@@ -24,6 +24,7 @@ human friendly, but also easy to script. Available commands:
 - t - memory test
 - \+ - echo on
 - \- echo off
+- m - calculate md5 sum
 - s - clear memory (all 0xff)
 - r - reset target (pulse /RST)
 

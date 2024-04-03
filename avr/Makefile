@@ -2,7 +2,7 @@ ISP ?= usbasp
 #ISP ?= avrisp2
 
 all: emuprom.c
-	avr-gcc -DF_CPU=8000000UL -O2 -mmcu=atmega8 -Wall emuprom.c uart/uart.c -o bin/emuprom
+	avr-gcc -DF_CPU=8000000UL -O2 -mmcu=atmega8 -Wall emuprom.c uart/uart.c md5/md5.c -o bin/emuprom
 	avr-objcopy -Oihex bin/emuprom bin/emuprom.hex
 	size -A -d bin/emuprom
 

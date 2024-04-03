@@ -17,7 +17,9 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+
 #include "uart/uart.h"
+#include "md5/md5.h"
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -200,8 +202,33 @@ static void help(void)
 	uart_puts("\tt - memory test\n");
 	uart_puts("\t+ - echo on\n");
 	uart_puts("\t- - echo off\n");
+	uart_puts("\tm - calculate md5 sum\n");
 	uart_puts("\ts - clear memory (all 0xff)\n");
 	uart_puts("\tr - reset target (pulse /RST)\n");
+}
+
+static void md5(void)
+{
+	MD5Context ctx;
+	uint8_t buff[64];
+
+	md5Init(&ctx);
+
+	for (uint16_t i = 0; i < 32u * 1024; i += sizeof(buff)) {
+		for (uint16_t j = 0; j < sizeof(buff); ++j) {
+			buff[j] = read(i + j);
+		}
+		md5Update(&ctx, buff, sizeof(buff));
+	}
+
+	md5Finalize(&ctx);
+	
+	uart_puts("md5: ");
+	for (uint8_t i = 0; i < sizeof(ctx.digest); ++i) {
+		sprintf((char *)buff, "%02x", ctx.digest[i]);
+		uart_puts((char *)buff);
+	}
+	uart_putc('\n');
 }
 
 static int parse(char c)
@@ -260,6 +287,8 @@ static int parse(char c)
 				break;
 
 			case 's':
+				if (!claimed)
+					return -1;
 				fill(0xff);
 				break;
 				
@@ -270,6 +299,11 @@ static int parse(char c)
 				CLEAR(DDRB, 1);
 				SET(PORTB, 1);
 				break;
+
+			case 'm':
+				if (claimed)
+					md5();
+				return -1; /* Supress echo */
 
 			case '?':
 				help();
