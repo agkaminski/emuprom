@@ -1,6 +1,6 @@
 # emuprom
 DIY ATmega8 based 27C256 EPROM emulator. Human accessible UART interface
-(19200N1, CH340 on USB C).
+(19200N1, CH340 on USB C). Project is verified and working.
 
 # Target connection
 
@@ -8,7 +8,11 @@ Via ribbon cable with DIP-28 adapter. Uses 40 pin IDC connector, but only 28
 pins are used. Target power state detection is supported (external bus is
 resistant to high-z state).
 
-Adapter pictures and details TBD.
+Crude cable schematic, top view (should be enought to be able to make this cable):
+
+<img src="img/cable.jpg">
+
+Sanity check - EPROM GND (pin \#14) should be on the one before last wire.
 
 # UART interface
 
