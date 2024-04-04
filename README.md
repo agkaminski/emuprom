@@ -1,7 +1,3 @@
-# Bugs
-There's a problem, that hasn't been found by testing via readout on EPROM programmer - data bus is always
-active, when the bus is released by AVR. This warrants redesing that's in progress.
-
 # emuprom
 DIY ATmega8 based 27C256 EPROM emulator. Human accessible UART interface
 (19200N1, CH340 on USB C).
