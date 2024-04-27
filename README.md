@@ -2,6 +2,9 @@
 DIY ATmega8 based 27C256 EPROM emulator. Human accessible UART interface
 (19200N1, CH340 on USB C).
 
+Revision D has been verified and it is working as intended (working both with
+TL866 EPROM programer and FellaPC computer).
+
 # Target connection
 Via ribbon cable with DIP-28 adapter. Uses 40 pin IDC connector, but only 28
 pins are used. Target power state detection is supported (external bus is
@@ -49,6 +52,7 @@ avr-gcc, avr-libc and avrdude are needed.
 - make install (upload FW).
 
 # Pictures
-This is a picture of rev A with fixes applied. Rev B has one extra resistor.
+This is a picture of revision D. Note the recommended heat shrink sleeve, to
+prevent accidental short circuits.
 
-<img src="img/top.jpeg">
+<img src="img/top.png">
